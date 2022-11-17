@@ -8,7 +8,7 @@ class TestMonthInfo(unittest.TestCase):
 
     def test_can_assign_month(self):
         month_info = monthinfo.CurrentMonth(month=11, year=2022)
-        self.assertEqual(month_info.month, 12)
+        self.assertEqual(month_info.month, 11)
 
     def test_calendar(self):
         month_info = monthinfo.CurrentMonth(11, 2022, calendar.SATURDAY)
