@@ -1,5 +1,7 @@
 # monthinfo
 
+[![test](https://github.com/marco-ostaska/monthinfo/actions/workflows/unit_test.yml/badge.svg)](https://github.com/marco-ostaska/monthinfo/actions/workflows/unit_test.yml)
+
 A package that that gives you information about the month
 
 ## Installation
