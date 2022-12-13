@@ -1,26 +1,26 @@
 import calendar
 import datetime
 
-WEEK_DAYS = {0: "Monday",
-             1: "Tuesday",
-             2: "Wednesday",
-             3: "Thursday",
-             4: "Friday",
-             5: "Saturday",
-             6: "Sunday"}
-
 
 class CurrentMonth():
+    WEEK_DAYS = {0: "Monday",
+                 1: "Tuesday",
+                 2: "Wednesday",
+                 3: "Thursday",
+                 4: "Friday",
+                 5: "Saturday",
+                 6: "Sunday"}
 
     def __init__(self, month, year):
         self.month = month
         self.year = year
+
         calendar.setfirstweekday(5)
     def calendar(self):
         return calendar.monthcalendar(self.year, self.month)
 
     def first_week_day(self) -> str:
-        return WEEK_DAYS[datetime.date(self.year, self.month, 1).weekday()]
+        return CurrentMonth.WEEK_DAYS[datetime.date(self.year, self.month, 1).weekday()]
 
     def list_of_days(self) -> list:
       return list(range(1, calendar.monthrange(self.year, self.month)[1]+1))
