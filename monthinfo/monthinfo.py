@@ -3,7 +3,6 @@ import datetime
 
 
 class CurrentMonth():
-
     def __init__(self, month, year, first_week_day):
         calendar.setfirstweekday(first_week_day)
         self.month = month
