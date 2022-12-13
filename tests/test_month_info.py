@@ -11,7 +11,7 @@ class TestMonthInfo(unittest.TestCase):
         self.assertEqual(month_info.month, 11)
 
     def test_calendar(self):
-        month_info = monthinfo.CurrentMonth(11, 2022, calendar.SATURDAY)
+        month_info = monthinfo.CurrentMonth(11, 2022)
         self.assertEqual(month_info.calendar()[0][3], 1)
 
     def test_is_saturday(self):
@@ -86,7 +86,7 @@ class TestMonthInfo(unittest.TestCase):
 
     def test_list_of_weeks(self):
         month_info = monthinfo.CurrentMonth(
-            month=11, year=2022, first_week_day=calendar.SATURDAY)
+            month=11, year=2022)
         self.assertEqual(month_info.list_of_weeks()[0], [0, 0, 0, 1, 2, 3, 4])
         self.assertEqual(month_info.list_of_weeks()[
                          1], [5, 6, 7, 8, 9, 10, 11])
@@ -121,7 +121,7 @@ class TestMonthInfo(unittest.TestCase):
 
     def test_first_weekend(self):
         month_info = monthinfo.CurrentMonth(
-            month=11, year=2022, first_week_day=calendar.SUNDAY)
+            month=11, year=2022)
         self.assertTrue(month_info.is_weekend(day=5))
         self.assertFalse(month_info.is_weekend(1))
 
@@ -174,7 +174,7 @@ class TestMonthInfo(unittest.TestCase):
         self.assertEqual(month_info.number_of_weekdays(), 22)
 
     def test_get_calendar_indexes_for_this_day(self):
-        month_info = monthinfo.CurrentMonth(11, 2022, calendar.SATURDAY)
+        month_info = monthinfo.CurrentMonth(11, 2022)
         week, day = month_info.get_calendar_indexes_for_this_day(1)
         self.assertEqual(week, 0)
         self.assertEqual(day, 3)
