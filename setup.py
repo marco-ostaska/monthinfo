@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name="monthinfo",
-    version="0.1.0",
+    version="1.0.1",
     author="Marco Ostaska",
     author_email="marcoan@ymail.com",
     description="get information about a given month",
