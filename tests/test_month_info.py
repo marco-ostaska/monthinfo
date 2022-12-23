@@ -64,3 +64,9 @@ class Test_CurrentMonth(unittest.TestCase):
 
     def test_number_of_weeks(self):
         self.assertEqual(self.calendar.get.number_of_weeks, 6)
+
+    def test_get_calendar_indexes_for_this_day(self):
+        week, day = self.calendar.get_calendar_indexes_for_this_day(1)
+        self.assertEqual(week, 0)
+        self.assertEqual(day, 5)
+        self.assertEqual(self.calendar.calendar[week][day], 1)

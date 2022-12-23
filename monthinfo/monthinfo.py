@@ -195,6 +195,29 @@ class CurrentMonth:
         """
         return calendar.monthcalendar(self.year, self.month)
 
+    def get_calendar_indexes_for_this_day(self, day):
+        """
+        Returns the indexes of the specified day in the month's calendar.
+
+        The first index represents the week number (starting from 0), and the second
+        index represents the day of the week (starting from 0). Days that are not
+        part of the current month are represented by zeros in the calendar.
+
+        Args:
+            day: An integer representing the day of the month (1-31).
+
+        Returns:
+            A tuple containing two integers representing the indexes of the specified
+            day in the month's calendar.
+
+        Raises:
+            ValueError: If the specified day is not in the current month.
+        """
+        for i, week in enumerate(self.calendar):
+            for j, d in enumerate(week):
+                if d == day:
+                    return i, j
+
 
 def setfirstweekday(first_week_day: str):
     Week.first_day = Week.inverted_days()[first_week_day.capitalize()]
