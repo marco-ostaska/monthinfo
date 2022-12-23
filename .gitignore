@@ -3,6 +3,7 @@ dist
 *.egg-info
 venv
 gen*.py
+.vscode
 
 
 # Byte-compiled / optimized / DLL files
@@ -165,3 +166,5 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+.vscode/settings.json
+test_month_info.py.b7d7c441589c2c0e18fd26b8624e6544.tmp
