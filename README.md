@@ -1,10 +1,11 @@
 # monthinfo
 
-[![test](https://github.com/marco-ostaska/monthinfo/actions/workflows/unit_test.yml/badge.svg)](https://github.com/marco-ostaska/monthinfo/actions/workflows/unit_test.yml)
+A collection of utility functions for working with a given month.
 
-A package that that gives you information about the month
 
 ## Installation
+
+To install MonthInfo, use `pip`:
 
 ```
 pip install monthinfo
@@ -12,167 +13,55 @@ pip install monthinfo
 
 ### Usage
 
-```python
-from monthinfo import monthinfo
+To use MonthInfo, import the `CurrentMonth` class and call the `new` function, passing in the year, month, and first day of the week as arguments:
 
-# initialize month_info object with Nov/2022 and the first day of month as Saturday
-# range of 0=Monday, 6=Sunday
-month_info = monthinfo.CurrentMonth(month=11, year=2022, first_day_of_week=5)
+```python
+from monthinfo import new
+
+current_month = new(2022, 12, 'Sunday')
 ```
 
-## Features
+The `CurrentMonth` class provides several methods and properties for accessing and manipulating information about the given month:
 
-### calendar()
 
-Returns the calendar in the month.
+- `get.first_week_day`: returns the day of the week of the first day of the month.
+- `validate.is_day_in_weekday(day: int, weekday: str) -> bool`: checks if a given day in the month falls on a specific weekday.
+- `validate.is_in_first_weekday(day: int, weekday: str) -> bool`: returns True if the specified day is the first weekday of the month, False otherwise.
+- `validate.is_weekend(day: int) -> bool`: returns True if the specified day is a weekend day (Saturday or Sunday), False otherwise.
+- `get.list_of_weekday(weekday: str) -> list`: returns a list of the days in the month that fall on the specified weekday.
+- `get.number_of_weekday(weekday: str) -> int`: returns the number of days in the month that fall on the specified weekday.
+- `get.number_of_weekends() -> float`: returns the number of weekend days (Saturday or Sunday) in the month as a float.
+- `get.list_of_days`: returns a list of the days in the month as integers.
+- `get.list_of_weeks`: returns a list of the weeks in the month, where each element is a list of integers representing the days of the week. Days that are not part of the current month are represented by zeros.
+- `get.number_of_days`: returns the number of days in the month.
+- `get.number_of_weeks`: returns the number of weeks in the month.
+- `get_calendar_indexes_for_this_day(day: int) -> tuple`: returns a tuple containing the index of the week and the index of the day within the week for the specified day.
+- `calendar`: returns a list of lists representing the calendar for the month, where each inner list represents a week and contains integers representing the days of the week. Days that are not part of the current month are represented by zeros.
 
-### first_week_day()
+Here is an example of using some of these methods and properties:
 
-Returns the first week day in the month
+```python
+# Get the day of the week of the first day of the month
+first_week_day = current_month.get.first_week_day
+print(f'First week day: {first_week_day}')
 
-### get_calendar_indexes_for_this_day(day)
+# Check if the 15th day of the month falls on a Wednesday
+is_wednesday = current_month.validate.is_day_in_weekday(15, 'Wednesday')
+print(f'15th day is Wednesday: {is_wednesday}')
 
-Returns a tuple with the indexes that can be used with calendar() for the given day.
+# Get the list of Saturdays in the month
+saturdays = current_month.get.list_of_weekday('Saturday')
+print(f'Saturdays in the month: {saturdays}')
 
-### is_first_monday(day)
+# Get the calendar for the month
+calendar = current_month.calendar
+print(f'Calendar for the month: {calendar}')
 
-Returns True if the given day is the first Monday in the month
+# Get the indexes for the 3rd day of the month in the calendar
+week_index, day_index = current_month.get_calendar_indexes_for_this_day(3)
+print(f'3rd day is in week {week_index + 1}, day {day_index + 1}')
+```
 
-### is_first_tuesday(day)
 
-Returns True if the given day is the first Tuesday in the month
+You can then use these methods and properties to extract various information about the month, such as the day of the week of the first day of the month, whether a specific day falls on a particular weekday, the list of days in the month that are on a specific weekday, the number of days in the month, the number of weeks in the month, and so on.
 
-### is_first_wednesday(day)
-
-Returns True if the given day is the first Wednesday in the month
-
-### is_first_thursday(day)
-
-Returns True if the given day is the first Thursday in the month
-
-### is_first_friday(day)
-
-Returns True if the given day is the first Friday in the month
-
-### is_first_saturday(day)
-
-Returns True if the given day is the first Saturday in the month
-
-### is_first_sunday(day)
-
-Returns True if the given day is the first Sunday in the month
-
-### is_first_weekend(day)
-
-Returns True if the given day is the first weekend in the month
-
-### is_monday(day)
-
-Returns True if the given day is Monday
-
-### is_tuesday(day)
-
-Returns True if the given day is Tuesday
-
-### is_wednesday(day)
-
-Returns True if the given day is Wednesday
-
-### is_thursday(day)
-
-Returns True if the given day is Thursday
-
-### is_friday(day)
-Returns True if the given day is Friday
-
-### is_saturday(day)
-
-Returns True if the given day is Saturday
-
-### is_sunday(day)
-
-Returns True if the given day is Sunday
-
-### is_weekend(day)
-
-Returns True if the given day in a weekend
-
-### list_of_days()
-
-Returns a list of days in the month
-
-### list_of_mondays()
-
-Returns a list of Mondays in the month
-
-### list_of_tuesdays()
-
-Returns a list of Tuesdays in the month
-
-### list_of_wednesdays
-
-Returns a list of Wednesday in the month
-
-### list_of_thursdays()
-
-Returns a list of Thursday in the month
-
-### list_of_fridays()
-
-Returns a list of Fridays in the month
-
-### list_of_saturdays()
-
-Returns a list of Saturdays in the month
-
-### list_of_sundays()
-
-Returns a list of Sundays in the month
-
-### list_of_weeks()
-
-Returns a list of weeks in the month. (Each week is a list of days.)
-
-### number_of_days()
-
-Returns the number of days in the month
-
-### number_of_weekdays()
-
-Returns the number of week days in the month
-
-### number_of_weekends()
-
-Returns the number of weekends in the month
-
-### number_of_weeks()
-
-Returns the number of weeks in the month
-
-### number_of_mondays()
-
-Returns the number of Mondays in the month
-
-### number_of_tuesdays()
-
-Returns the number of Tuesdays in the month
-
-### number_of_wednesdays()
-
-Returns the number of Wednesday in the month
-
-### number_of_thursdays()
-
-Returns the number of Thursday in the month
-
-### number_of_fridays()
-
-Returns the number of Fridays in the month
-
-### number_of_saturdays()
-
-Returns the number of Saturdays in the month
-
-### number_of_sundays()
-
-Returns the number of Sundays in the month

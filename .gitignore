@@ -3,6 +3,7 @@ dist
 *.egg-info
 venv
 gen*.py
+.vscode
 
 
 # Byte-compiled / optimized / DLL files
