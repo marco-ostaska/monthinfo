@@ -46,59 +46,6 @@ class CurrentMonth(DayOfWeek):
         self.month = month
         self.year = year
 
-    def calendar(self):
-        """
-        Returns a matrix representing a month's calendar.
-
-        Each row represents a week, and each column represents a day of the week.
-        Days that are not part of the current month are represented by zeros.
-
-        Returns:
-            A list of lists containing integers representing the days of the month.
-        """
-        return calendar.monthcalendar(self.year, self.month)
-
-
-    def list_of_days(self) -> list:
-        """
-        Returns a list of the days in the current month.
-
-        The list contains integers representing the days of the month, starting from 1.
-
-        Returns:
-            A list of integers representing the days of the month.
-        """
-        return list(range(1, calendar.monthrange(self.year, self.month)[1]+1))
-
-    def list_of_weeks(self) -> list:
-        """
-        Returns a list of the weeks in the current month.
-
-        Each element of the list is a list of integers representing the days of the week.
-        Days that are not part of the current month are represented by zeros.
-
-        Returns:
-            A list of lists containing integers representing the days of the month.
-        """
-        return list(calendar.monthcalendar(self.year, self.month))
-
-    def number_of_weeks(self) -> int:
-        """
-        Returns the number of weeks in the current month.
-
-        Returns:
-            An integer representing the number of weeks in the current month.
-        """
-        return len(calendar.monthcalendar(self.year, self.month))
-
-    def number_of_days(self) -> int:
-        """
-        Returns the number of days in the current month.
-
-        Returns:
-            An integer representing the number of days in the current month.
-        """
-        return calendar.monthrange(self.year, self.month)[1]
 
     def get_calendar_indexes_for_this_day(self, day):
         """
@@ -123,31 +70,6 @@ class CurrentMonth(DayOfWeek):
                 if d == day:
                     return i, j
 
-    def is_first_saturday(self, day) -> bool:
-        """
-        Returns True if the specified day is the first Saturday of the month, False otherwise.
-
-        Args:
-            day: An integer representing the day of the month (1-31).
-
-        Returns:
-            A boolean indicating whether the specified day is the first Saturday of the month.
-
-        Raises:
-            ValueError: If the specified day is not in the current month.
-        """
-        return self.is_first_weekend(day) and self.is_saturday(day)
-
-    def list_of_saturdays(self) -> list:
-        """
-        Returns a list of the days in the current month that are Saturdays.
-
-        The list contains integers representing the days of the month, starting from 1.
-
-        Returns:
-            A list of integers representing the days of the month that are Saturdays.
-        """
-        return [day for day in self.list_of_days() if self.is_saturday(day)]
 
     def number_of_saturdays(self) -> int:
         """
@@ -224,19 +146,7 @@ class CurrentMonth(DayOfWeek):
         """
         return self.is_weekend(day) and day < 8
 
-    def number_of_weekends(self) -> int:
-        """
-        Returns the number of weekend days (Saturdays and Sundays) in the current month.
 
-        The number of weekend days is calculated as the maximum number of Saturdays or Sundays in the month.
-
-        Returns:
-            An integer representing the number of weekend days in the current month.
-        """
-        if self.number_of_saturdays() >= self.number_of_sundays():
-            return self.number_of_saturdays()
-
-        return self.number_of_sundays()
 
     def is_weekend(self, day) -> bool:
         """

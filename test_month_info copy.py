@@ -79,39 +79,9 @@ class TestMonthInfo(unittest.TestCase):
         self.assertEqual(month_info.list_of_weeks()[
                          1], [5, 6, 7, 8, 9, 10, 11])
 
-    def test_list_of_saturdays(self):
-        month_info = monthinfo.CurrentMonth(month=11, year=2022, first_week_day=5)
-        self.assertEqual(month_info.list_of_saturdays(), [5, 12, 19, 26])
 
-    def test_list_of_sundays(self):
-        month_info = monthinfo.CurrentMonth(month=11, year=2022, first_week_day=5)
-        self.assertEqual(month_info.list_of_sundays(), [6, 13, 20, 27])
 
-    def test_list_of_mondays(self):
-        month_info = monthinfo.CurrentMonth(month=11, year=2022, first_week_day=5)
-        self.assertEqual(month_info.list_of_mondays(), [7, 14, 21, 28])
 
-    def test_list_of_tuesdays(self):
-        month_info = monthinfo.CurrentMonth(month=11, year=2022, first_week_day=5)
-        self.assertEqual(month_info.list_of_tuesdays(), [1, 8, 15, 22, 29])
-
-    def test_list_of_wednesdays(self):
-        month_info = monthinfo.CurrentMonth(month=11, year=2022, first_week_day=5)
-        self.assertEqual(month_info.list_of_wednesdays(), [2, 9, 16, 23, 30])
-
-    def test_list_of_thursdays(self):
-        month_info = monthinfo.CurrentMonth(month=11, year=2022, first_week_day=5)
-        self.assertEqual(month_info.list_of_thursdays(), [3, 10, 17, 24])
-
-    def test_list_of_fridays(self):
-        month_info = monthinfo.CurrentMonth(month=11, year=2022, first_week_day=5)
-        self.assertEqual(month_info.list_of_fridays(), [4, 11, 18, 25])
-
-    def test_first_weekend(self):
-        month_info = monthinfo.CurrentMonth(
-            month=11, year=2022, first_week_day=5)
-        self.assertTrue(month_info.is_weekend(day=5))
-        self.assertFalse(month_info.is_weekend(1))
 
     def test_get_first_week_day(self):
         month_info = monthinfo.CurrentMonth(month=11, year=2022, first_week_day=5)
